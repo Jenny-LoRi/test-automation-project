@@ -1,4 +1,4 @@
-package app.google;
+package app.taskvizor;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,11 +8,12 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-/**
- * Created by LoRi on 06.06.2017.
- */
+import java.util.concurrent.TimeUnit;
 
-public class SearchTest {
+/**
+ * Created by Test on 07.06.2017.
+ */
+public class LoginTV {
 
     private WebDriver driver;
     private WebElement element;
@@ -23,22 +24,24 @@ public class SearchTest {
         //System.setProperty("webdriver.gecko.driver", "D:\\Dev\\Projects\\TAF\\drivers\\geckodriver.exe");//Firefox Browser
         System.setProperty("webdriver.chrome.driver", "C:\\projects\\test-automation-project\\drivers\\chromedriver.exe");//Chrome Browser
         driver = new ChromeDriver();
-        driver.get("http://vk.com");
+        driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.get("http://78.47.141.130");
     }
 
     @Test
-    public void loginVK() throws InterruptedException {
-        TestData login = new TestData();
-        element = driver.findElement(By.id("index_email"));
+    public void loginTV() throws InterruptedException {
+        DataLogin login = new DataLogin("evgeny.moshin@tut.by", "123456");
+        element = driver.findElement(By.name("email"));
         element.sendKeys(login.email);
-        element = driver.findElement(By.id("index_pass"));
+        element = driver.findElement(By.name("password"));
         element.sendKeys(login.password);
-        element = driver.findElement(By.id("index_login_button"));
+        element = driver.findElement(By.cssSelector("button"));
         element.click();
 
         Thread.sleep(5000);
     }
-
 
 
     @AfterTest
@@ -46,5 +49,3 @@ public class SearchTest {
         driver.quit();
     }
 }
-
-
