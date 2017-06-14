@@ -51,7 +51,7 @@ public class TaskVizor {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 10);
-        driver.get("http://78.47.141.130");
+        driver.get("http://addr.com");
     }
 
     @Test
@@ -59,11 +59,11 @@ public class TaskVizor {
         DataLogin login = new DataLogin();
         emailInput = driver.findElement(By.name("email"));
         assertion.assertTrue(emailInput.isDisplayed());
-        login.setEmail("el@safedriving.by");
+        login.setEmail("email");
         emailInput.sendKeys(login.getEmail());
         passInput = driver.findElement(By.name("password"));
         assertion.assertTrue(passInput.isDisplayed());
-        login.setPassword("123456");
+        login.setPassword("password");
         passInput.sendKeys(login.getPassword());
         buttonSubmit = driver.findElement(By.cssSelector("button"));
         assertion.assertTrue(buttonSubmit.isDisplayed());
