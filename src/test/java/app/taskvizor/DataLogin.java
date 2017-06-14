@@ -4,17 +4,19 @@ package app.taskvizor;
  * Created by Test on 07.06.2017.
  */
 public class DataLogin {
-    private String email;
-    private String password;
+   private String email;
+   private String password;
 
-    public DataLogin() {
+    public void setEmail (String email){
+       this.email = email;
     }
-
-    public DataLogin(String newEmail, String newPass) {
-        this.email = newEmail;
-        this.password = newPass;
+    public void setPassword (String password){
+       this.password = password;
     }
-
-
+    public String getEmail (){
+        return email;
+    }
+    public String getPassword (){
+        return password;
+    }
 }
-
